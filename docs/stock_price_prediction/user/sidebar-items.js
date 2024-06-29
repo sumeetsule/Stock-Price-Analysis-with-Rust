@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["user_choice","user_symbol"]};

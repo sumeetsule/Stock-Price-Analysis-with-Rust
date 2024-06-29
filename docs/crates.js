@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["stock_price_prediction"];
