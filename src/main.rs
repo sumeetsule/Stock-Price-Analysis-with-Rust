@@ -5,7 +5,7 @@ mod test;
 use crate::user::{user_choice,user_symbol};
 use crate::daily::{stock_data_daily,stock_data_historical};
 
-
+/// main function
 fn main() {
     let symbol = user_symbol();
     let user_choice = user_choice();

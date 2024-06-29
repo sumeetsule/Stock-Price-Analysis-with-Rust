@@ -10,7 +10,7 @@ use std::error::Error;
 use postgres::{Client as PgClient,NoTls};
 
 
-// Struct for stock data
+/// Struct for stock data
 #[derive(Debug, Deserialize)]
 pub struct TimeSeries {
     #[serde(rename = "1. open")]
@@ -26,7 +26,7 @@ pub struct TimeSeries {
 }
 
 
-// Struct for API
+/// Struct for API
 #[derive(Debug, Deserialize)]
 pub struct ApiResponse {
     #[serde(rename = "Time Series (Daily)")]
@@ -34,10 +34,10 @@ pub struct ApiResponse {
 }
 
 
-// Function to fetch the stock data from Alpha Vantage
+/// Function to fetch the stock data from Alpha Vantage
 pub fn fetch_stock_data_daily(api_key: &str, symbol: &str) -> Result<ApiResponse, Box<dyn Error>> {
     let url = format!(
-        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={}&apikey={}",
+        "https:///www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={}&apikey={}",
         symbol, api_key
     );
 
@@ -47,7 +47,7 @@ pub fn fetch_stock_data_daily(api_key: &str, symbol: &str) -> Result<ApiResponse
 }
 
 
-// Function to pass API key and stock symbol
+/// Function to pass API key and stock symbol
 pub fn stock_data_daily(symbol: &str) {
     let api_key = "YPHKF6BPQ68DT14O"; 
     match fetch_stock_data_daily(api_key, symbol) {
@@ -122,10 +122,10 @@ pub fn stock_data_daily(symbol: &str) {
 }
 
 
-// Function to fetch the stock data from Alpha Vantage
+/// Function to fetch the stock data from Alpha Vantage
 pub fn fetch_stock_data_historical(api_key: &str,symbol: &str) -> Result<ApiResponse, Box<dyn Error>> {
     let url = format!(
-        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={}&outputsize=full&apikey={}",
+        "https:///www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={}&outputsize=full&apikey={}",
         symbol, api_key
     );
 
@@ -135,7 +135,7 @@ pub fn fetch_stock_data_historical(api_key: &str,symbol: &str) -> Result<ApiResp
 }
 
 
-// Function to pass API key and stock symbol
+/// Function to pass API key and stock symbol
 pub fn stock_data_historical(symbol: &str) {
     let api_key = "YPHKF6BPQ68DT14O"; 
     match fetch_stock_data_historical(api_key, symbol) {
@@ -217,20 +217,20 @@ pub fn stock_data_historical(symbol: &str) {
 }
 
 
-// Function that changes the date from YYYY-MM-DD format to MM-DD-YYYY only for the output
+/// Function that changes the date from YYYY-MM-DD format to MM-DD-YYYY only for the output
 pub fn format_date(date: &str) -> Result<String, ParseError> {
     let parsed_date = NaiveDate::parse_from_str(date, "%Y-%m-%d")?;
     Ok(parsed_date.format("%B-%d-%Y").to_string())
 }
 
 
-// Rounds up the value to have only two digits after decimal point
+/// Rounds up the value to have only two digits after decimal point
 pub fn round_two_decimals(value: f64) -> f64 {
     (value * 100.0).round() / 100.0
 }
 
 
-// Function that stores the data in PostgreSQL database named "Rustproject"
+/// Function that stores the data in PostgreSQL database named "Rustproject"
 fn save_to_db(df: &DataFrame) -> Result<(), Box<dyn Error>> {
     let mut client = PgClient::connect("host=localhost user=postgres password=sumeet dbname=Rustproject", NoTls)?;
 

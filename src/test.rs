@@ -1,3 +1,4 @@
+/// test cases
 #[cfg(test)]
 mod tests {
     use crate::daily::{round_two_decimals, format_date, fetch_stock_data_daily, fetch_stock_data_historical};

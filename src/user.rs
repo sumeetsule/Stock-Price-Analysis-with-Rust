@@ -1,6 +1,6 @@
 use std::io;
 
-// Function to get user choice for time frame
+/// Function to get user choice for time frame
 pub fn user_choice() -> String {
     println!(
         "Enter the time frequency you want to look for: 
@@ -16,7 +16,7 @@ pub fn user_choice() -> String {
 }
 
 
-// Function to get symbol for which the user wants to see the stock data
+/// Function to get symbol for which the user wants to see the stock data
 pub fn user_symbol() -> String {
     println!("Enter the stock symbol you want to see:");
 
