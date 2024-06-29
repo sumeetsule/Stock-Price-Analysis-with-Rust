@@ -1,6 +1,5 @@
 use std::io;
 
-
 // Function to get user choice for time frame
 pub fn user_choice() -> String {
     println!(
